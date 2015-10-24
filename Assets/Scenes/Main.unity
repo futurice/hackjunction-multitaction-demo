@@ -199,12 +199,16 @@ GameObject:
   m_Component:
   - 4: {fileID: 41019507}
   - 114: {fileID: 41019506}
+  - 61: {fileID: 41019511}
+  - 61: {fileID: 41019510}
+  - 61: {fileID: 41019509}
+  - 61: {fileID: 41019508}
   m_Layer: 0
-  m_Name: Tester
+  m_Name: TweetManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &41019506
 MonoBehaviour:
@@ -218,7 +222,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   query: '#sten'
+  tweetContainer: {fileID: 52834076}
   tweetPrefab: {fileID: 180812, guid: 118f555d0548b48e2a93af629076c5e9, type: 2}
+  tweetBackgrounds:
+  - {fileID: 21300000, guid: 01858d97e41ac449fba21e5d0815e820, type: 3}
+  - {fileID: 21300000, guid: b485d572f0a9a4682b0b73b5ce39f277, type: 3}
+  - {fileID: 21300000, guid: 85b1d6be92551477f855fbb43ab41363, type: 3}
+  - {fileID: 21300000, guid: 053c070cb43fc454eaf6c1af6dd3fe94, type: 3}
+  - {fileID: 21300000, guid: c46837c3438c347c7be773020d7dc784, type: 3}
+  - {fileID: 21300000, guid: 539e2a9198c284737b55bb15481d9a88, type: 3}
 --- !u!4 &41019507
 Transform:
   m_ObjectHideFlags: 0
@@ -226,11 +238,63 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 41019505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.89999962, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!61 &41019508
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 41019505}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 9.80000019, y: -5.21999979}
+  serializedVersion: 2
+  m_Size: {x: 20, y: .300000012}
+--- !u!61 &41019509
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 41019505}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 19.75, y: 1}
+  serializedVersion: 2
+  m_Size: {x: .300000012, y: 12}
+--- !u!61 &41019510
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 41019505}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 9.80000019, y: 7.26999998}
+  serializedVersion: 2
+  m_Size: {x: 20, y: .300000012}
+--- !u!61 &41019511
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 41019505}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 1}
+  serializedVersion: 2
+  m_Size: {x: .300000012, y: 12}
 --- !u!1 &52834075
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +402,7 @@ MonoBehaviour:
   sendMessageEvents: 60
   sendMessageTarget: {fileID: 0}
   layers: []
---- !u!1001 &305742046
+--- !u!1001 &389013332
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -515,7 +579,7 @@ Transform:
 --- !u!4 &880920957 stripped
 Transform:
   m_PrefabParentObject: {fileID: 473442, guid: 118f555d0548b48e2a93af629076c5e9, type: 2}
-  m_PrefabInternal: {fileID: 305742046}
+  m_PrefabInternal: {fileID: 389013332}
 --- !u!4 &1431114492 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: c0dc5781cae4a6348b42ea6b818a3f9c, type: 2}

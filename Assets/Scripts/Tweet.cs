@@ -8,9 +8,10 @@ using System.Text.RegularExpressions;
 [XmlType("item")]
 public class Tweet
 {
-	private string _title;
-	private string _author;
-	private string _description;
+	private string 		_title;
+	private string 		_author;
+	private string 		_description;
+	private DateTime 	_pubDate;
 
 	public Tweet ()
 	{
@@ -63,8 +64,15 @@ public class Tweet
 	[XmlElement("pubDate")]
 	public string PubDate
 	{
-		get;
-		set;
+		get
+		{
+			return _pubDate.ToShortDateString ();
+		}
+
+		set
+		{
+			_pubDate = DateTime.Parse (value);
+		}
 	}
 
 	[XmlElement("description")]
