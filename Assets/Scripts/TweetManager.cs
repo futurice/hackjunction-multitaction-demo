@@ -81,7 +81,10 @@ public class TweetManager : MonoBehaviour
 			new Vector3 (UnityEngine.Random.Range (bounds.min.x + 1.0f, bounds.max.x - 1.0f),
 			             UnityEngine.Random.Range (bounds.min.y + 1.0f, bounds.max.y - 1.0f),
 			             0.0f);
-		
+
+		float scale = UnityEngine.Random.Range (0.9f, 1.5f);
+		tweetObj.transform.localScale = new Vector3 (scale, scale, 1.0f);
+
 		// Set the Tweet content including the background sprite
 		TweetController tweetController = tweetObj.GetComponent <TweetController> ();
 		tweetController.title.text = t.Author;
