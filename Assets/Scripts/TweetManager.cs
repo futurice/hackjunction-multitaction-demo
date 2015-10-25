@@ -10,6 +10,7 @@ public class TweetManager : MonoBehaviour
 	public string 		query 				= "#sten";
 	public Transform	tweetContainer		= null;
 	public GameObject 	tweetPrefab 		= null;
+	public GameObject	spinnerPrefab		= null;
 	public List<Sprite> tweetBackgrounds 	= new List<Sprite> ();
 
 	// Use this for initialization
@@ -43,21 +44,29 @@ public class TweetManager : MonoBehaviour
 
 	void GetTweets ()
 	{
+		// Instantiate a new loading animation prefab
+		GameObject loadingAnimation = Instantiate (spinnerPrefab);
+
 		Debug.Log (string.Format ("Searching for Tweets with query: {0}", query));
-		QueryfeedAPI.SearchTweets (query).Subscribe (
-			tl => 
-			{
-				Debug.Log (string.Format ("Retrieved {0} Tweets successfully", tl.Tweets.Count));
-				foreach (Tweet t in tl.Tweets)
+		QueryfeedAPI.SearchTweets (query)
+			.Delay (TimeSpan.FromMilliseconds (500))
+			.Subscribe (
+				tl => 
 				{
-					Debug.Log (string.Format ("Author: {0}, Description: {1}", t.Author, t.Description));
-					InstantiateTweetObject (t);
+					Debug.Log (string.Format ("Retrieved {0} Tweets successfully", tl.Tweets.Count));
+					Destroy (loadingAnimation);
+
+					foreach (Tweet t in tl.Tweets)
+					{
+						Debug.Log (string.Format ("Author: {0}, Description: {1}", t.Author, t.Description));
+						InstantiateTweetObject (t);
+					}
+				},
+				ex =>
+				{
+					Debug.Log (string.Format ("Failed to retrieve Tweets for query {0}, ex: {1}", query, ex));
+					Destroy (loadingAnimation);
 				}
-			},
-			ex =>
-			{
-				Debug.Log (string.Format ("Failed to retrieve Tweets for query {0}, ex: {1}", query, ex));
-			}
 		);
 	}
 

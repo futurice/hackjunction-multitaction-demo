@@ -224,6 +224,7 @@ MonoBehaviour:
   query: '#sten'
   tweetContainer: {fileID: 52834076}
   tweetPrefab: {fileID: 180812, guid: 118f555d0548b48e2a93af629076c5e9, type: 2}
+  spinnerPrefab: {fileID: 121236, guid: 04be7d4dcbce1441781243beb36e8435, type: 2}
   tweetBackgrounds:
   - {fileID: 21300000, guid: 01858d97e41ac449fba21e5d0815e820, type: 3}
   - {fileID: 21300000, guid: b485d572f0a9a4682b0b73b5ce39f277, type: 3}
