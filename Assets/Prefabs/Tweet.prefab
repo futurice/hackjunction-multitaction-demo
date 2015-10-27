@@ -207,10 +207,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2629cc39c4a8245beb0f23462299e601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 11473356}
-  description: {fileID: 11416774}
-  pubDate: {fileID: 11443800}
-  spriteRenderer: {fileID: 21272630}
+  _title: {fileID: 11473356}
+  _description: {fileID: 11416774}
+  _pubDate: {fileID: 11443800}
+  _spriteRenderer: {fileID: 21272630}
 --- !u!114 &11431494
 MonoBehaviour:
   m_ObjectHideFlags: 1

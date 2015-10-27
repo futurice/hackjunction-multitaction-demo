@@ -157,10 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b599ca1b46244d48bbec4e306067cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingText: {fileID: 11417234}
-  loadingTextAnimDuration: .5
-  startText: Loading
-  endText: Loading...
+  _loadingText: {fileID: 11417234}
+  _loadingTextAnimDuration: .5
+  _startText: Loading
+  _endText: Loading...
 --- !u!212 &21265570
 SpriteRenderer:
   m_ObjectHideFlags: 1

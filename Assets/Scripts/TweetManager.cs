@@ -7,11 +7,20 @@ using System.Collections.Generic;
 
 public class TweetManager : MonoBehaviour
 {
-	public string 		query 				= "#sten";
-	public Transform	tweetContainer		= null;
-	public GameObject 	tweetPrefab 		= null;
-	public GameObject	spinnerPrefab		= null;
-	public List<Sprite> tweetBackgrounds 	= new List<Sprite> ();
+	[SerializeField]
+	private string 			_query 				= "#sten";
+
+	[SerializeField]
+	private Transform		_tweetContainer		= null;
+
+	[SerializeField]
+	private GameObject 		_tweetPrefab 		= null;
+
+	[SerializeField]
+	private GameObject		_spinnerPrefab		= null;
+
+	[SerializeField]
+	private List<Sprite> 	_tweetBackgrounds 	= new List<Sprite> ();
 
 	// Use this for initialization
 	void Start ()
@@ -45,10 +54,10 @@ public class TweetManager : MonoBehaviour
 	void GetTweets ()
 	{
 		// Instantiate a new loading animation prefab
-		GameObject loadingAnimation = Instantiate (spinnerPrefab);
+		GameObject loadingAnimation = Instantiate (_spinnerPrefab);
 
-		Debug.Log (string.Format ("Searching for Tweets with query: {0}", query));
-		QueryfeedAPI.SearchTweets (query)
+		Debug.Log (string.Format ("Searching for Tweets with query: {0}", _query));
+		QueryfeedAPI.SearchTweets (_query)
 			.Delay (TimeSpan.FromMilliseconds (500))
 			.Subscribe (
 				tl => 
@@ -64,7 +73,7 @@ public class TweetManager : MonoBehaviour
 				},
 				ex =>
 				{
-					Debug.Log (string.Format ("Failed to retrieve Tweets for query {0}, ex: {1}", query, ex));
+					Debug.Log (string.Format ("Failed to retrieve Tweets for query {0}, ex: {1}", _query, ex));
 					Destroy (loadingAnimation);
 				}
 		);
@@ -72,11 +81,11 @@ public class TweetManager : MonoBehaviour
 
 	void InstantiateTweetObject (Tweet t)
 	{
-		GameObject tweetObj = Instantiate (tweetPrefab);
+		GameObject tweetObj = Instantiate (_tweetPrefab);
 		Bounds bounds = GetOrthographicBoundsForCamera (Camera.main);	
 		
 		// Set the parent and position of the Tweet
-		tweetObj.transform.SetParent (tweetContainer);
+		tweetObj.transform.SetParent (_tweetContainer);
 		tweetObj.transform.position =
 			new Vector3 (UnityEngine.Random.Range (bounds.min.x + 1.0f, bounds.max.x - 1.0f),
 			             UnityEngine.Random.Range (bounds.min.y + 1.0f, bounds.max.y - 1.0f),
@@ -87,10 +96,10 @@ public class TweetManager : MonoBehaviour
 
 		// Set the Tweet content including the background sprite
 		TweetController tweetController = tweetObj.GetComponent <TweetController> ();
-		tweetController.title.text = t.Author;
-		tweetController.description.text = t.Description;
-		tweetController.pubDate.text = t.PubDate;
-		tweetController.spriteRenderer.sprite = tweetBackgrounds[UnityEngine.Random.Range (0, tweetBackgrounds.Count)];
+		tweetController.Title.text = t.Author;
+		tweetController.Description.text = t.Description;
+		tweetController.PubDate.text = t.PubDate;
+		tweetController.SpriteRenderer.sprite = _tweetBackgrounds[UnityEngine.Random.Range (0, _tweetBackgrounds.Count)];
 	}
 
 	Bounds GetOrthographicBoundsForCamera (Camera camera)

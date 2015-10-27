@@ -5,21 +5,28 @@ using UnityEngine.UI;
 
 public class LoadAnimationController : MonoBehaviour
 {
-	public Text 	loadingText 			= null;
-	public float	loadingTextAnimDuration = 0.5f;
-	public string 	startText 				= "Loading";
-	public string 	endText					= "Loading...";
+	[SerializeField]
+	private Text 	_loadingText 				= null;
+
+	[SerializeField]
+	private float	_loadingTextAnimDuration 	= 0.5f;
+
+	[SerializeField]
+	private string 	_startText 					= "Loading";
+
+	[SerializeField]
+	private string 	_endText					= "Loading...";
 
 	void Start ()
 	{
 		// Start the loading text animation
-		loadingText.text = startText;
+		_loadingText.text = _startText;
 
 		DOTween.To (
-			() => loadingText.text,
-			x => loadingText.text = x,
-			endText,
-			loadingTextAnimDuration)
+			() => _loadingText.text,
+			x => _loadingText.text = x,
+			_endText,
+			_loadingTextAnimDuration)
 			.SetLoops (-1, LoopType.Restart);
 	}
 
