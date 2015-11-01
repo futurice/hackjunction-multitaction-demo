@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 41b4b74cceb844e2d80afceec244d61d
+PluginImporter:
+  serializedVersion: 1
+  iconMap: {}
+  executionOrder:
+    TouchScript.GestureManagerInstance: -1000
+    TouchScript.InputSources.MouseInput: -1101
+    TouchScript.TouchManagerInstance: -900
+  isPreloaded: 0
+  platformData:
+    Any:
+      enabled: 1
+      settings: {}
+    Editor:
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

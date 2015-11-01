@@ -78,7 +78,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 473442}
   - 212: {fileID: 21272630}
-  - 61: {fileID: 6152884}
+  - 60: {fileID: 6087056}
   - 50: {fileID: 5060932}
   - 114: {fileID: 11414556}
   - 114: {fileID: 11431494}
@@ -121,8 +121,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6152884
-BoxCollider2D:
+--- !u!60 &6087056
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -132,8 +132,17 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1.72249997, y: 1.61249995}
+  m_Points:
+    m_Paths:
+    - - {x: .861249983, y: .806249976}
+      - {x: -.861249983, y: .806249976}
+      - {x: -.861249983, y: -.491250008}
+      - {x: -.510051966, y: -.493071407}
+      - {x: -.508750021, y: -.806249976}
+      - {x: -.493750006, y: -.806249976}
+      - {x: -.183750004, y: -.53125}
+      - {x: -.143749997, y: -.491250008}
+      - {x: .861249983, y: -.491250008}
 --- !u!114 &11414556
 MonoBehaviour:
   m_ObjectHideFlags: 1

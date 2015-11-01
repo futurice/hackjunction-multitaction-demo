@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5fab50398f844d8892bdc179013ec75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _query: '#sten'
+  _testQuery: '#sten'
   _tweetContainer: {fileID: 52834076}
   _tweetPrefab: {fileID: 180812, guid: 118f555d0548b48e2a93af629076c5e9, type: 2}
   _spinnerPrefab: {fileID: 121236, guid: 04be7d4dcbce1441781243beb36e8435, type: 2}
@@ -362,8 +362,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 226436287}
   - 114: {fileID: 226436290}
-  - 114: {fileID: 226436289}
   - 114: {fileID: 226436288}
+  - 114: {fileID: 226436291}
   m_Layer: 0
   m_Name: TouchManager
   m_TagString: Untagged
@@ -399,22 +399,6 @@ MonoBehaviour:
   Tags:
     tagList:
     - Mouse
---- !u!114 &226436289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 226436286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 770742126, guid: 20c2a163775f09b4cafa29b19d0c9204, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  advancedProps: 0
-  DisableOnNonTouchPlatforms: 1
-  Tags:
-    tagList:
-    - Touch
 --- !u!114 &226436290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +415,43 @@ MonoBehaviour:
   useSendMessage: 0
   sendMessageEvents: 60
   sendMessageTarget: {fileID: 0}
-  layers: []
+  layers:
+  - {fileID: 7}
+--- !u!114 &226436291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 226436286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1254801617, guid: 53d3dc02e71df20438406b9087fe1e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  advancedProps: 0
+  tuioPort: 3333
+  supportedInputs: 7
+  tuioObjectMappings:
+  - Id: 0
+    Tag: Eraser
+  - Id: 1
+    Tag: '#futurice'
+  - Id: 2
+    Tag: '#multitaction'
+  - Id: 3
+    Tag: '#hackjunction'
+  cursorTags:
+    tagList:
+    - TUIO
+    - Touch
+  blobTags:
+    tagList:
+    - TUIO
+    - Touch
+  objectTags:
+    tagList:
+    - TUIO
+    - Object
 --- !u!1 &546007208
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +680,7 @@ GameObject:
   - 4: {fileID: 876344468}
   - 114: {fileID: 876344467}
   m_Layer: 0
-  m_Name: MarkerManager
+  m_Name: TagManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -674,19 +694,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 876344466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad01e8534e01140f98df761eb82a5ef1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6412338dfd6384437aa286574f4587fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _markerIdToQueryArray:
-  - markerId: 1
-    query: '#futurice'
-  - markerId: 2
-    query: '#multitaction'
-  - markerId: 3
-    query: '#hackjunction'
-  _markerIdToToolArray:
-  - markerId: 0
+  _tagNameToToolArray:
+  - tagName: Eraser
     toolPrefab: {fileID: 129890, guid: 2a4b317d67d1641428db1b7660b61a18, type: 2}
+  _ignoredTagNames:
+  - Mouse
 --- !u!4 &876344468
 Transform:
   m_ObjectHideFlags: 0
@@ -702,7 +717,7 @@ Transform:
 --- !u!4 &880920957 stripped
 Transform:
   m_PrefabParentObject: {fileID: 473442, guid: 118f555d0548b48e2a93af629076c5e9, type: 2}
-  m_PrefabInternal: {fileID: 2035498220}
+  m_PrefabInternal: {fileID: 1675396425}
 --- !u!1 &1217183363
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,14 +773,14 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1518950018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1431114492}
   - {fileID: 226436287}
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!1001 &2035498220
+--- !u!1001 &1675396425
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -892,11 +907,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c0dc5781cae4a6348b42ea6b818a3f9c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c0dc5781cae4a6348b42ea6b818a3f9c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c0dc5781cae4a6348b42ea6b818a3f9c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -921,6 +936,10 @@ Prefab:
     - target: {fileID: 100000, guid: c0dc5781cae4a6348b42ea6b818a3f9c, type: 2}
       propertyPath: m_Name
       value: TouchDebugger
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c0dc5781cae4a6348b42ea6b818a3f9c, type: 2}
+      propertyPath: showTags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0dc5781cae4a6348b42ea6b818a3f9c, type: 2}

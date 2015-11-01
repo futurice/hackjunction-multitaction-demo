@@ -8,22 +8,49 @@ using System.Collections.Generic;
 public class TweetManager : MonoBehaviour
 {
 	[SerializeField]
-	private string 			_query 				= "#sten";
+	private string 					_testQuery 			= "#sten";
 
 	[SerializeField]
-	private Transform		_tweetContainer		= null;
+	private Transform				_tweetContainer		= null;
 
 	[SerializeField]
-	private GameObject 		_tweetPrefab 		= null;
+	private GameObject		 		_tweetPrefab 		= null;
 
 	[SerializeField]
-	private GameObject		_spinnerPrefab		= null;
+	private GameObject				_spinnerPrefab		= null;
 
 	[SerializeField]
-	private List<Sprite> 	_tweetBackgrounds 	= new List<Sprite> ();
+	private List<Sprite> 			_tweetBackgrounds 	= new List<Sprite> ();
 
-	// Use this for initialization
-	void Start ()
+	private static 	TweetManager 	_instance 			= null;
+	
+	public static TweetManager Instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				_instance = GameObject.FindObjectOfType<TweetManager> ();
+			}
+			
+			return _instance;
+		}
+	}
+	
+	private void Awake () 
+	{
+		if (_instance == null)
+		{
+			_instance = this;
+		}
+		else
+		{
+			Debug.LogWarning ("Multiple TweetManagers present, disabling: {0}", this.gameObject);
+			enabled = false;
+		}
+	}
+
+	private void Start ()
 	{
 		// Make a buffered and throttled stream from the space key
 		// presses
@@ -32,32 +59,30 @@ public class TweetManager : MonoBehaviour
 		
 		clickStream.Buffer (clickStream.Throttle(TimeSpan.FromMilliseconds(250)))
 			.Where(x => x.Count >= 1)
-			.Subscribe(x => GetTweets ());
+			.Subscribe(x => GetTweets (_testQuery));
 
 		// Observe any tweets leaving the game field and destroy them
 		this.OnTriggerEnter2DAsObservable ()
 			.Subscribe (col => 
-			            {
-							Debug.Log ("Triggered!");
-							if (col.gameObject.CompareTag ("Tweet"))
-				    		{
-								Destroy (col.gameObject);
-							}
-						});
+	            {
+					if (col.gameObject.CompareTag ("Tweet"))
+		    		{
+						Destroy (col.gameObject);
+					}
+				});
 	}
 	
-	// Update is called once per frame
-	void Update ()
+	private void Update ()
 	{
 	}
 
-	void GetTweets ()
+	public void GetTweets (string query)
 	{
 		// Instantiate a new loading animation prefab
 		GameObject loadingAnimation = Instantiate (_spinnerPrefab);
 
-		Debug.Log (string.Format ("Searching for Tweets with query: {0}", _query));
-		QueryfeedAPI.SearchTweets (_query)
+		Debug.Log (string.Format ("Searching for Tweets with query: {0}", query));
+		QueryfeedAPI.SearchTweets (query)
 			.Delay (TimeSpan.FromMilliseconds (500))
 			.Subscribe (
 				tl => 
@@ -73,13 +98,13 @@ public class TweetManager : MonoBehaviour
 				},
 				ex =>
 				{
-					Debug.Log (string.Format ("Failed to retrieve Tweets for query {0}, ex: {1}", _query, ex));
+					Debug.Log (string.Format ("Failed to retrieve Tweets for query {0}, ex: {1}", query, ex));
 					Destroy (loadingAnimation);
 				}
 		);
 	}
 
-	void InstantiateTweetObject (Tweet t)
+	private void InstantiateTweetObject (Tweet t)
 	{
 		GameObject tweetObj = Instantiate (_tweetPrefab);
 		Bounds bounds = GetOrthographicBoundsForCamera (Camera.main);	
@@ -102,7 +127,7 @@ public class TweetManager : MonoBehaviour
 		tweetController.SpriteRenderer.sprite = _tweetBackgrounds[UnityEngine.Random.Range (0, _tweetBackgrounds.Count)];
 	}
 
-	Bounds GetOrthographicBoundsForCamera (Camera camera)
+	private Bounds GetOrthographicBoundsForCamera (Camera camera)
 	{
 		float screenAspect = (float)Screen.width / (float)Screen.height;
 		float cameraHeight = camera.orthographicSize * 2;
