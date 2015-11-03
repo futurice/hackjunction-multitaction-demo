@@ -1,0 +1,51 @@
+/* Layoutting and input-flags for our MainWidget */
+MainWidget {
+  size: 100% 100%;
+  input-motion: false;
+  background-color: transparent;
+  depth: 1;
+}
+
+/* Some basic style options for all TextWidgets */
+TextWidget {
+  background-color: transparent;
+  font-family: "Arial";
+}
+
+
+/* This is the parent widget for our popup UI */
+PopupWidget {
+  size: 400 600;
+}
+
+/* logo on top-right corner */
+#PopupImage {
+  origin: 1 0;
+  location: 95% 5%;
+  source: "../Assets/Images/Black_RGB_ForDigitalUse_small.png";
+}
+
+/* text label */
+#PopupHeader {
+  location: 5% 5%;
+  width: 90%;
+  font-size: 24px;
+  stroke-width: 8px;
+  stroke: black;
+  
+}
+
+/* Tweet text labels */
+.TweetText {
+  width: 50%;
+  resize-to-content: true;
+  stroke-width: 3px;
+  stroke: black;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  origin: 0.5 0.5;
+  location: 50% 50%;
+  background-color: #FDE200;
+  
+}
