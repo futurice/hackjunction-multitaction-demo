@@ -14,15 +14,22 @@ namespace HackJunction {
   {
     setCSSType("PopupWidget");
 
+    pickRandomBackground();
+
     // Let's just add some widgets as children and do the UI layout in CSS
     auto image = MultiWidgets::create<MultiWidgets::ImageWidget>();
     image->setCSSId("PopupImage");
-
-    pickRandomBackground();
-
-    // Disable all interaction for the children. Can be done in CSS also.
-    image->setInputFlags(INPUT_NONE);
     addChild(image);
+
+    // Let's use the logo-image also as close button, just for example's sake
+    image->eventAddListener("single-tap", [this]{
+      // SDK handles cleaning of the memory for this widget and all it's children,
+      // once the widget has been removed the hierarchy (and no other references exist)
+      this->removeFromParent();
+    });
+    // Disable all other interaction. Can be done in CSS also.
+    image->setInputFlags(INPUT_SINGLE_TAPS);
+
 
     // Add a listener to the size-attribute of the objects.
     // When the size changes (from CSS or from code), this will re-scale the logo image to be 30%.
