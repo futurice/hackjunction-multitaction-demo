@@ -416,7 +416,8 @@ MonoBehaviour:
   useSendMessage: 0
   sendMessageEvents: 60
   sendMessageTarget: {fileID: 0}
-  layers: []
+  layers:
+  - {fileID: 7}
 --- !u!114 &226436291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,13 +433,13 @@ MonoBehaviour:
   tuioPort: 3333
   supportedInputs: 7
   tuioObjectMappings:
-  - Id: 0
+  - Id: 1589
     Tag: Eraser
-  - Id: 1
+  - Id: 1596
     Tag: '#futurice'
-  - Id: 2
+  - Id: 1597
     Tag: '#multitaction'
-  - Id: 3
+  - Id: 1594
     Tag: '#hackjunction'
   cursorTags:
     tagList:
