@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _testQuery: '#sten'
+  _maxTweetsPerSearch: 5
   _tweetContainer: {fileID: 52834076}
   _tweetPrefab: {fileID: 180812, guid: 118f555d0548b48e2a93af629076c5e9, type: 2}
   _spinnerPrefab: {fileID: 121236, guid: 04be7d4dcbce1441781243beb36e8435, type: 2}
