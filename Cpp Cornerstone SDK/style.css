@@ -49,3 +49,22 @@ PopupWidget {
   background-color: #FDE200;
   
 }
+
+/* finger effects */
+
+Sparkles {
+  size: 100% 100%;
+  background-color: transparent;
+  grab-flags: grabs-fingers; /* only grab fingers, not markers */
+  depth: 1;
+  lock-depth: true;
+  
+  particles-per-frame: 10;
+  motion-factor: 5;
+  particle-size: 15;
+
+  particle-color0: rgba(255,255,255,1);
+  particle-color1: rgba(255,255,255,0.5);
+  particle-color2: rgba(255,255,255,0);
+}
+

@@ -2,22 +2,19 @@
 
 #include "PopupWidget.hpp"
 
+#include <MultiWidgets/Plugins.hpp>
+
 namespace HackJunction {
 
   namespace {
-    /* @TODO Update marker codes once we have them */
-    enum MarkerCode {
-      MultiTaction = 41,
-      Slush = 42,
-      Futurice = 43
-    };
-
     const QString codeToQuery(int code) {
-      if (code == MarkerCode::MultiTaction)
+      if (code >= 0 && code <= 7) /* Circle marker produces a bit random codes between 0-7.. */
+        return "@Heineken";
+      if (code == 1591)
         return "@multitaction";
-      if (code == MarkerCode::Slush)
+      if (code == 1595)
         return "@slush";
-      if (code == MarkerCode::Futurice)
+      if (code == 1599)
         return "@futurice";
       return "";
     }
@@ -29,6 +26,9 @@ namespace HackJunction {
     //Define a CSS type what we can use from stylesheets
     setCSSType("MainWidget");
 
+    //Let's add some finger effects
+    auto sparkles = MultiWidgets::createPlugin("cornerstone.sparkles");
+    addChild(sparkles);
   }
 
   MainWidget::~MainWidget()
