@@ -9,7 +9,13 @@ public class LoadAnimationController : MonoBehaviour
 	private Text 	_loadingText 				= null;
 
 	[SerializeField]
+	private Image	_loadingImage				= null;
+
+	[SerializeField]
 	private float	_loadingTextAnimDuration 	= 0.5f;
+
+	[SerializeField]
+	private float 	_loadingImageAnimDuration 	= 1.0f;
 
 	[SerializeField]
 	private string 	_startText 					= "Loading";
@@ -27,6 +33,11 @@ public class LoadAnimationController : MonoBehaviour
 			x => _loadingText.text = x,
 			_endText,
 			_loadingTextAnimDuration)
+			.SetLoops (-1, LoopType.Restart);
+
+		// Start the image spinning
+		_loadingImage.transform.DORotate (new Vector3 (0.0f, 0.0f, -360.0f), _loadingImageAnimDuration, RotateMode.FastBeyond360)
+			.SetEase (Ease.Linear)
 			.SetLoops (-1, LoopType.Restart);
 	}
 

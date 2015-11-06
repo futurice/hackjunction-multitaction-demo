@@ -102,15 +102,15 @@ public class TagManager : MonoBehaviour
 					Debug.Log (string.Format ("Ignoring tag: {0}", tag));
 					continue;
 				}
+
+				Vector3 worldPosition = Camera.main.ScreenToWorldPoint (new Vector3 (touch.Position.x,
+				                                                                     touch.Position.y,
+				                                                                     0.0f));
+
 				// Check whether this tag is a tool tag
-				else if (_tagNameToToolDict.ContainsKey (tag))
+				if (_tagNameToToolDict.ContainsKey (tag))
 				{
 					Debug.Log (string.Format ("Instantiating tool with tag: {0}", tag));
-
-					Vector3 worldPosition = Camera.main.ScreenToWorldPoint (new Vector3 (touch.Position.x,
-						                                             					 touch.Position.y,
-						                                             					 0.0f));
-
 					GameObject tool = (GameObject)Instantiate (_tagNameToToolDict [tag], worldPosition, Quaternion.identity);
 
 					IToolController controller = tool.GetComponent<IToolController>();
@@ -126,8 +126,8 @@ public class TagManager : MonoBehaviour
 				// If nothing else, search for Tweets with the tag
 				else
 				{
-					Debug.Log (string.Format ("Searching for tweets with tag: {0}", tag));
-					TweetManager.Instance.GetTweets (tag);
+					Debug.Log (string.Format ("Instantiating tweets with tag: {0}", tag));
+					TweetManager.Instance.CreateTweets (tag, worldPosition);
 				}
 			}
 		}
