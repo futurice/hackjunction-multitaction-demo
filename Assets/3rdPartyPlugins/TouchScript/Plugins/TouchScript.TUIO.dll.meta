@@ -1,14 +1,19 @@
 fileFormatVersion: 2
-guid: 79a4d43786071994f99fd36708a4fbb9
+guid: 53d3dc02e71df20438406b9087fe1e5d
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
-  executionOrder: {}
+  executionOrder:
+    TouchScript.InputSources.TuioInput: -1120
   isPreloaded: 0
   platformData:
     Any:
       enabled: 1
       settings: {}
+    Editor:
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
   userData: 
   assetBundleName: 
   assetBundleVariant: 

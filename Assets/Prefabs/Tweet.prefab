@@ -81,8 +81,8 @@ GameObject:
   - 60: {fileID: 6087056}
   - 50: {fileID: 5060932}
   - 114: {fileID: 11431494}
-  - 114: {fileID: 11468352}
   - 114: {fileID: 11495300}
+  - 114: {fileID: 11443754}
   - 114: {fileID: 11411528}
   - 114: {fileID: 11429746}
   m_Layer: 9
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 180812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1518784480, guid: 20c2a163775f09b4cafa29b19d0c9204, type: 3}
+  m_Script: {fileID: -1518784480, guid: 41b4b74cceb844e2d80afceec244d61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   advancedProps: 0
@@ -245,8 +245,8 @@ MonoBehaviour:
   sendMessageTarget: {fileID: 0}
   requireGestureToFail: {fileID: 0}
   friendlyGestures:
-  - {fileID: 11468352}
   - {fileID: 11495300}
+  - {fileID: 11443754}
   projection: 0
   projectionNormal: {x: 0, y: 0, z: 1}
   movementThreshold: .5
@@ -266,6 +266,33 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11443754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1136761322, guid: 41b4b74cceb844e2d80afceec244d61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  advancedProps: 0
+  minTouches: 0
+  maxTouches: 0
+  combineTouches: 0
+  combineTouchesInterval: .300000012
+  useSendMessage: 0
+  sendStateChangeMessages: 0
+  sendMessageTarget: {fileID: 0}
+  requireGestureToFail: {fileID: 0}
+  friendlyGestures:
+  - {fileID: 11431494}
+  - {fileID: 11495300}
+  projection: 0
+  projectionNormal: {x: 0, y: 0, z: 1}
+  minPointsDistance: .5
+  scalingThreshold: .5
 --- !u!114 &11443800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,33 +319,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 25/10/2015
---- !u!114 &11468352
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1726975797, guid: 20c2a163775f09b4cafa29b19d0c9204, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  advancedProps: 0
-  minTouches: 0
-  maxTouches: 0
-  combineTouches: 0
-  combineTouchesInterval: .300000012
-  useSendMessage: 0
-  sendStateChangeMessages: 0
-  sendMessageTarget: {fileID: 0}
-  requireGestureToFail: {fileID: 0}
-  friendlyGestures:
-  - {fileID: 11431494}
-  - {fileID: 11495300}
-  projection: 0
-  projectionNormal: {x: 0, y: 0, z: 1}
-  minPointsDistance: .5
-  rotationThreshold: 3
 --- !u!114 &11473356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 180812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1136761322, guid: 20c2a163775f09b4cafa29b19d0c9204, type: 3}
+  m_Script: {fileID: 1726975797, guid: 41b4b74cceb844e2d80afceec244d61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   advancedProps: 0
@@ -367,11 +367,11 @@ MonoBehaviour:
   requireGestureToFail: {fileID: 0}
   friendlyGestures:
   - {fileID: 11431494}
-  - {fileID: 11468352}
+  - {fileID: 11443754}
   projection: 0
   projectionNormal: {x: 0, y: 0, z: 1}
   minPointsDistance: .5
-  scalingThreshold: .5
+  rotationThreshold: 3
 --- !u!212 &21272630
 SpriteRenderer:
   m_ObjectHideFlags: 1

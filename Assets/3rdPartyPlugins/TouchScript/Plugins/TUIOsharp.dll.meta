@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aa83d1ea05edf8748af6cae5aed422e4
+guid: 79a4d43786071994f99fd36708a4fbb9
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
@@ -7,10 +7,10 @@ PluginImporter:
   isPreloaded: 0
   platformData:
     Any:
-      enabled: 0
+      enabled: 1
       settings: {}
     Editor:
-      enabled: 1
+      enabled: 0
       settings:
         DefaultValueInitialized: true
   userData: 
