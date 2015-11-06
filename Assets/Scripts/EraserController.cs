@@ -23,12 +23,11 @@ public class EraserController : MonoBehaviour, IToolController
 
 	}
 
-	private List<IDisposable> _disposables = new List<IDisposable>();
+	private List<IDisposable> _disposables = new List<IDisposable> ();
 	
 	private void Update ()
 	{
-		// TODO: track the tag and move with the tag
-	}
+ 	}
 
 	private void OnDestroy()
 	{
