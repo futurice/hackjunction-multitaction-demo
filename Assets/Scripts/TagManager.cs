@@ -24,6 +24,8 @@ public class TagManager : MonoBehaviour
 
 	private static 	TagManager 						_instance 				= null;
 
+	private 		Dictionary<int, GameObject>		_touchIDToolMap			= new Dictionary<int, GameObject> ();
+
 	public static TagManager Instance
 	{
 		get
@@ -67,6 +69,7 @@ public class TagManager : MonoBehaviour
 		if (TouchManager.Instance != null)
 		{
 			TouchManager.Instance.TouchesBegan += TouchesBeganHandler;
+			TouchManager.Instance.TouchesEnded += TouchesEndedHandler;
 		}
 	}
 
@@ -74,7 +77,8 @@ public class TagManager : MonoBehaviour
 	{
 		if (TouchManager.Instance != null)
 		{
-			TouchManager.Instance.TouchesBegan += TouchesBeganHandler;
+			TouchManager.Instance.TouchesBegan -= TouchesBeganHandler;
+			TouchManager.Instance.TouchesEnded -= TouchesEndedHandler;
 		}
 	}
 	
@@ -107,9 +111,17 @@ public class TagManager : MonoBehaviour
 						                                             					 touch.Position.y,
 						                                             					 0.0f));
 
-					Instantiate (_tagNameToToolDict [tag], worldPosition, Quaternion.identity);
-					// TODO: Instantiate at the tags position and rotation
-					// TODO: Make the tool follow the tag
+					GameObject tool = (GameObject)Instantiate (_tagNameToToolDict [tag], worldPosition, Quaternion.identity);
+
+					IToolController controller = tool.GetComponent<IToolController>();
+
+					if (controller != null)
+					{
+						_touchIDToolMap.Add(touch.Id, tool);
+						controller.FollowTouch(touch);
+					}
+
+
 				}
 				// If nothing else, search for Tweets with the tag
 				else
@@ -121,11 +133,29 @@ public class TagManager : MonoBehaviour
 		}
 	}
 
+	private void DestroyTool(ITouch touch)
+	{
+		if (_touchIDToolMap.ContainsKey(touch.Id))
+		{
+			GameObject.Destroy(_touchIDToolMap[touch.Id]);
+			_touchIDToolMap.Remove(touch.Id);
+		}
+	}
+
 	private void TouchesBeganHandler (object sender, TouchEventArgs e)
 	{
 		foreach (ITouch touch in e.Touches)
 		{
 			HandleTags (touch);
+		}
+	}
+
+	private void TouchesEndedHandler (object sender, TouchEventArgs e)
+	{
+		
+		foreach (ITouch touch in e.Touches)
+		{
+			DestroyTool(touch);
 		}
 	}
 }
